@@ -149,7 +149,7 @@ namespace {
 
   // MobilityBonus[PieceType-2][attacked] contains bonuses for middle and end game,
   // indexed by piece type and number of attacked squares in the mobility area.
-  const Score MobilityBonus[][16] = {
+  Score MobilityBonus[][16] = {
     { S(-75,-76), S(-57,-54), S( -9,-28), S( -2,-10), S(  6,  5), S( 14, 12), // Knights
       S( 22, 26), S( 29, 29), S( 36, 29) },
     { S(-48,-59), S(-20,-23), S( 16, -3), S( 26, 13), S( 38, 24) },           // Bishops
@@ -158,6 +158,7 @@ namespace {
       S( 46,166), S( 48,169), S( 58,171) },
     { S(-39,-36), S(-21,-15), S(  3,  8), S(  3, 18), S( 14, 34) }            // Queens
   };
+  TUNE(MobilityBonus);
 
   // Outpost[knight/bishop][supported by pawn] contains bonuses for minor
   // pieces if they can reach an outpost square, bigger if that square is
