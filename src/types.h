@@ -170,15 +170,15 @@ enum Value : int {
 };
 
 enum PieceType {
-  NO_PIECE_TYPE, PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING,
+  NO_PIECE_TYPE, PAWN, BISHOP, QUEEN, KNIGHT, ROOK, KING,
   ALL_PIECES = 0,
   PIECE_TYPE_NB = 8
 };
 
 enum Piece {
   NO_PIECE,
-  W_PAWN = 1, W_KNIGHT, W_BISHOP, W_ROOK, W_QUEEN, W_KING,
-  B_PAWN = 9, B_KNIGHT, B_BISHOP, B_ROOK, B_QUEEN, B_KING,
+  W_PAWN = 1, W_BISHOP, W_QUEEN, W_KNIGHT, W_ROOK, W_KING,
+  B_PAWN = 9, B_BISHOP, B_QUEEN, B_KNIGHT, B_ROOK, B_KING,
   PIECE_NB = 16
 };
 
@@ -403,7 +403,7 @@ inline MoveType type_of(Move m) {
 }
 
 inline PieceType promotion_type(Move m) {
-  return PieceType(((m >> 12) & 3) + KNIGHT);
+  return PieceType(((m >> 12) & 3) + BISHOP);
 }
 
 inline Move make_move(Square from, Square to) {
@@ -411,8 +411,8 @@ inline Move make_move(Square from, Square to) {
 }
 
 template<MoveType T>
-inline Move make(Square from, Square to, PieceType pt = KNIGHT) {
-  return Move(T + ((pt - KNIGHT) << 12) + (from << 6) + to);
+inline Move make(Square from, Square to, PieceType pt = BISHOP) {
+  return Move(T + ((pt - BISHOP) << 12) + (from << 6) + to);
 }
 
 inline bool is_ok(Move m) {
